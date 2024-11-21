@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "author": "Iago Uttemberg",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": 25.8, "left": -438.8, "attrs": {} },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": -4.76, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -80.4,
+      "left": -91.8,
+      "attrs": { "color": "red", "flip": "1" }
+    },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": -97.3, "left": 9.4, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 14.4,
+      "left": -96.55,
+      "rotate": 90,
+      "attrs": { "value": "330" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "pot1:GND", "esp:GND.2", "black", [ "v28.8", "h76.8", "v38.4" ] ],
+    [ "led1:A", "esp:2", "red", [ "v268.8", "h240", "v-67.2" ] ],
+    [ "pot1:SIG", "esp:VP", "gold", [ "v19.2", "h-86.8", "v67.2" ] ],
+    [ "esp:3V3", "bb1:tp.25", "red", [ "h-95.85", "v9.6" ] ],
+    [ "pot1:VCC", "bb1:tp.24", "red", [ "v9.6", "h-202.4" ] ],
+    [ "esp:GND.1", "bb1:tn.25", "black", [ "h-95.85", "v-105.6" ] ],
+    [ "led1:C", "r1:1", "black", [ "v0" ] ],
+    [ "r1:2", "bb1:tn.23", "black", [ "h0", "v18", "h-86.4" ] ]
+  ],
+  "dependencies": {}
+}
